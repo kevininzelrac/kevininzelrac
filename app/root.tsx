@@ -9,8 +9,13 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import bkgrd from "../public/bkgrd.jpg";
+import root from "./styles/root.css";
+
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  ...(cssBundleHref
+    ? [{ rel: "stylesheet", href: cssBundleHref }]
+    : [{ rel: "stylesheet", href: root }]),
 ];
 
 export default function App() {
@@ -22,7 +27,11 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body
+        style={{
+          backgroundImage: "url(" + bkgrd + ")",
+        }}
+      >
         <Outlet />
         <ScrollRestoration />
         <Scripts />
